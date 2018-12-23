@@ -33,7 +33,7 @@ public class SubscriptionController {
 			response = SubscriptionResponseCreateDTO.class
 	)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Subscription created"),
+			@ApiResponse(code = 202, message = "Subscription created"),
 			@ApiResponse(code = 400, message = "Object not valid"),
 			@ApiResponse(code = 409, message = "Subscription already created before to that email and campaign"),
 			@ApiResponse(code = 500, message = "Internal server error")
@@ -44,7 +44,7 @@ public class SubscriptionController {
 		Subscription subscription = this.subscriptionService.convertSubscriptionCreateDTOToSubscriptionEntity(subscriptionCreateDTO);
 		subscription = this.subscriptionService.create(subscription);
 		if (subscription != null && subscription.getId() != null) {
-			return new ResponseEntity<SubscriptionResponseCreateDTO>(new SubscriptionResponseCreateDTO(subscription.getId()), HttpStatus.OK);
+			return new ResponseEntity<SubscriptionResponseCreateDTO>(new SubscriptionResponseCreateDTO(subscription.getId()), HttpStatus.CREATED);
 		} else if (subscription ==  null) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		} else {
