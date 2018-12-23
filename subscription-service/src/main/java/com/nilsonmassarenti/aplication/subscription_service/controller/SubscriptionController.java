@@ -16,13 +16,16 @@ import com.nilsonmassarenti.aplication.subscription_service.model.Subscription;
 import com.nilsonmassarenti.aplication.subscription_service.service.SubscriptionService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
 
 @RestController
-@RequestMapping("v1/subscriptions")
-@Api(value = "v1/subscriptions", tags = {"Subscription"})
+@RequestMapping("api/v1/subscriptions")
+@Api(value = "api/v1/subscriptions", tags = {"Subscription"})
 public class SubscriptionController {
 	
 	@Autowired
@@ -32,6 +35,9 @@ public class SubscriptionController {
 			notes = "Create subscription for campaign",
 			response = SubscriptionResponseCreateDTO.class
 	)
+    @ApiImplicitParams({
+    	 @ApiImplicitParam(name = "api-token", value = "Access Token to API - use eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9", paramType = "header")
+    })
 	@ApiResponses(value = {
 			@ApiResponse(code = 202, message = "Subscription created"),
 			@ApiResponse(code = 400, message = "Object not valid"),

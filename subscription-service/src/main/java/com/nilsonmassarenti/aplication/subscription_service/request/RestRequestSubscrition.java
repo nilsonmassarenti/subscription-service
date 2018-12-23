@@ -12,16 +12,16 @@ public class RestRequestSubscrition {
 	@Autowired
 	private RestRequest restRequest;
 
-	@Value("${adidas.server.service.event.link}")
+	@Value("${subscription.server.service.event.link}")
 	private String adidasEventLink;
 
-	@Value("${adidas.server.service.email.link}")
+	@Value("${subscription.server.service.email.link}")
 	private String adidasEmailLink;
 
-	@Value("${adidas.server.service.wait}")
+	@Value("${subscription.server.service.wait}")
 	private Integer failWait;
 	
-	@Value("${adidas.server.service.attempts}")
+	@Value("${subscription.server.service.attempts}")
 	private Integer attempts;
 	
 	public void sendSubscriptionToEmailAndEventServices(Subscription subscription) {

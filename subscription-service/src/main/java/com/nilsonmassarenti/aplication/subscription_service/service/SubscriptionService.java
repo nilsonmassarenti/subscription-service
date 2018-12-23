@@ -25,7 +25,7 @@ public class SubscriptionService {
 		if (subscriptionRepository.findByEmailAndNewsletterId(subscription.getEmail(), subscription.getNewsletterId()) == null) {
 			subscription = subscriptionRepository.save(subscription);	
 		}
-		if (subscription != null) {
+		if (subscription != null && subscription.getId() != null) {
 			Subscription subscriptionToSave = subscription;
 			Thread tSaveRest = new Thread(new Runnable() {
 
@@ -37,12 +37,6 @@ public class SubscriptionService {
 			tSaveRest.start(); 
 		}
 		return subscription;
-	}
-	
-	public List<ErrorMessage> checkObjectCreateSubscription(SubscriptionCreateDTO subscriptionCreateDTO){
-		List<ErrorMessage> errorMessage = new ArrayList<>();
-		
-		return errorMessage;
 	}
 	
 	public Subscription convertSubscriptionCreateDTOToSubscriptionEntity(SubscriptionCreateDTO subscriptionCreateDTO) {
