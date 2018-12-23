@@ -22,8 +22,4 @@ public class Subscription {
 	private Boolean consent;
 	@Getter @Setter
 	private String newsletterId;
-	@Getter @Setter
-	private LocalDateTime subscribeAt;
-	@Getter @Setter
-	private LocalDateTime unsubscribeAt;
 }

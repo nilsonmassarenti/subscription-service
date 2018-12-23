@@ -25,7 +25,7 @@ public class RestRequest {
 
 		try {
 			ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
-			if (response.getStatusCode().toString().equals("200")) {
+			if (response.getStatusCode().is2xxSuccessful()) {
 				return true;
 			} else {
 				return false;
