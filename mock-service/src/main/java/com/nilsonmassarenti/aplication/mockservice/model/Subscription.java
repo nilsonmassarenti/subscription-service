@@ -1,7 +1,5 @@
 package com.nilsonmassarenti.aplication.mockservice.model;
 
-import java.time.LocalDateTime;
-
 import lombok.Getter;
 import lombok.Setter;
 

@@ -23,40 +23,32 @@ public class RestRequestSubscrition {
 	
 	@Value("${adidas.server.service.attempts}")
 	private Integer attempts;
-
+	
 	public void sendSubscriptionToEmailAndEventServices(Subscription subscription) {
-		Thread tEvent = new Thread(new Runnable() {
-
+		createThreadToSubscription(adidasEmailLink, subscription);
+		createThreadToSubscription(adidasEventLink, subscription);
+	}
+	
+	private void createThreadToSubscription(String url, Subscription subscription) {
+		Thread thread = new Thread(new Runnable() {
+			Integer tAttempts = attempts;
 			@Override
 			public void run() {
+				
 				Integer attempt = 0;
-				while (restRequest.postSubscription(subscription, adidasEventLink) == false || attempt == 10) {
+				System.out.println("Processing - " + url + " - attempt: " + attempt);
+				while (restRequest.postSubscription(subscription, url) == false || attempt == tAttempts) {
 					attempt++;
+					System.out.println("Processing - " + url + " - attempt: " + attempt);
 					try {
 						Thread.sleep(failWait);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
+				System.out.println("Processed - " + url + " - attempt: " + attempt);
 			}
 		});
-		tEvent.start();
-
-		Thread tEmail = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				Integer attempt = 0;
-				while (restRequest.postSubscription(subscription, adidasEmailLink) == false || attempt == 10) {
-					attempt++;
-					try {
-						Thread.sleep(failWait);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-		tEmail.start();
+		thread.start();
 	}
 }
