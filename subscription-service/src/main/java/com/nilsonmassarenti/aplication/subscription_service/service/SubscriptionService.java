@@ -11,6 +11,7 @@ import com.nilsonmassarenti.aplication.subscription_service.dto.SubscriptionCrea
 import com.nilsonmassarenti.aplication.subscription_service.model.ErrorMessage;
 import com.nilsonmassarenti.aplication.subscription_service.model.Subscription;
 import com.nilsonmassarenti.aplication.subscription_service.repository.SubscriptionRepository;
+import com.nilsonmassarenti.aplication.subscription_service.request.RestRequestSubscrition;
 
 @Service
 public class SubscriptionService {
@@ -18,9 +19,22 @@ public class SubscriptionService {
 	@Autowired
 	private SubscriptionRepository subscriptionRepository;
 	
+	@Autowired RestRequestSubscrition restRequestSubscrition;
+	
 	public Subscription create(Subscription subscription) {
 		if (subscriptionRepository.findByEmailAndNewsletterId(subscription.getEmail(), subscription.getNewsletterId()) == null) {
 			subscription = subscriptionRepository.save(subscription);	
+		}
+		if (subscription != null) {
+			Subscription subscriptionToSave = subscription;
+			Thread tSaveRest = new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					restRequestSubscrition.sendSubscriptionToEmailAndEventServices(subscriptionToSave);
+				}
+			});
+			tSaveRest.start(); 
 		}
 		return subscription;
 	}

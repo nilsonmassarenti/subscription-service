@@ -1,7 +1,5 @@
 package com.nilsonmassarenti.aplication.mockservice.model;
 
-import java.time.LocalDateTime;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +20,4 @@ public class Subscription {
 	private Boolean consent;
 	@Getter @Setter
 	private String newsletterId;
-	@Getter @Setter
-	private LocalDateTime subscribeAt;
-	@Getter @Setter
-	private LocalDateTime unsubscribeAt;
 }
