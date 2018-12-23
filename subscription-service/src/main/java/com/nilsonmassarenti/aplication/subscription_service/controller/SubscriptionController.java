@@ -21,8 +21,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("v1/subscriptions")
-@Api(value = "v1/subscriptions", tags = {"Subscription"})
+@RequestMapping("api/v1/subscriptions")
+@Api(value = "api/v1/subscriptions", tags = {"Subscription"})
 public class SubscriptionController {
 	
 	@Autowired
