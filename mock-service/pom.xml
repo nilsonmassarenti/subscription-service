@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.nilsonmassarenti.application</groupId>
 	<artifactId>mock-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-alpha</version>
 	<name>mock-service</name>
 	<description>Event Service</description>
 
