@@ -34,7 +34,7 @@ $ mvn clean install
 $ mvn spring-boot:run
 ```
 
-However, if you are using Docker, execute this commands:
+However, if you are using Docker, execute thses commands:
 
 ```sh
 $ cd mock-service
@@ -56,7 +56,7 @@ $ mvn clean install
 $ mvn spring-boot:run
 ```
 
-However, if you are using Docker, execute this commands:
+However, if you are using Docker, execute these commands:
 
 ```sh
 $ cd subscription service
