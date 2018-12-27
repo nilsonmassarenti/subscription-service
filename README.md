@@ -34,6 +34,15 @@ $ mvn clean install
 $ mvn spring-boot:run
 ```
 
+However, if you are using Docker, execute this commands:
+
+```sh
+$ cd mock-service
+$ mvn clean install
+$ docker build -f Dockerfile -t mock-service .
+$ docker run -p 8081:8081 mock-service
+```
+
 if you won't use mock service, you need to change application.properties. Options available are:
   - Database - H2 to your database
   - Datasource - Configuration to your datasource
@@ -45,6 +54,15 @@ Install the dependencies and start the Subscription server.http://localhost:8080
 $ cd subscription service
 $ mvn clean install
 $ mvn spring-boot:run
+```
+
+However, if you are using Docker, execute this commands:
+
+```sh
+$ cd subscription service
+$ mvn clean install
+$ docker build -f Dockerfile -t subscription service .
+$ docker run -p 8080:8080 subscription service
 ```
 
 Swagger Available
