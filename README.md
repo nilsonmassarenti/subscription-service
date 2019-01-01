@@ -7,16 +7,9 @@ Subscription service is a example of rest service with restful integrations. Thi
 # New Features!
 
   - Create subscription - /api/v1/subscriptions
-  - Mock - Examples of event and emailo
-
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
-
+  - Mock - Examples of event and email
+  - Pipeline example  
 ### Tech
-
-Dillinger uses a number of open source projects to work properly:
 
 * [Spring] - Main Java Framework
 * [H2] - Database
